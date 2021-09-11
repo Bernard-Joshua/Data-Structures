@@ -22,7 +22,7 @@ unsigned long long Combination::operator()() const
 	if (fK <= fN) // When k <= n then only the calculation occurs.
 	{
 		// Counting Combinations. 
-		// Used Dynamic Programming method instaed of recursion to improve efficiency.
+		// Used Dynamic Programming method instead of recursion to improve efficiency.
 		for (int i = 0; i < fK; ++i)
 		{
 			coefficient *= (fN - i);
