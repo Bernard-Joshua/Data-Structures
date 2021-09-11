@@ -37,9 +37,10 @@ int main()
 	h = s.modelCalculate(unitSold, 2);
 	p = s.modelCalculate(unitSold, 3);
 	m = { r, t, h, p };
-	system("CLS");
+	
+	system("CLS"); // Clears screen/terminal.
 
-	//Overloaded Operator call that takes two parameters.
+	//Overloaded Operator call that takes two parameters. Also outputs the results of the calculations.
 	cout << setw(50) << setfill('=') << " Monthly Sales Figures " << setw(27) << setfill('=') << '\n';
 	cout << '\n';
 	s(b, m);
