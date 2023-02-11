@@ -25,31 +25,11 @@ Example of Unit Sold (monthly) (UnitSold array):
 
 Dash Cam selling price (Price array):
 
-| Dash Cam model Price
-
- |
- (RM) |
+| Dash Cam model Price| (RM) |
 | --- | --- |
-|
-RS Pro with GPS
-
-
- | 730 |
-|
-Transcend Drive Pro
-
-
- | 850
-
- |
-|
-H203 1080P
-
-
- | 150
-
-
- |
+|RS Pro with GPS| 730 |
+|Transcend Drive Pro|850|
+|H203 1080P| 150|
 | Pioneer | 350 |
 
 The program stores the unit sold into a two-dimensional array named UnitSold. Every month, the
