@@ -2,14 +2,11 @@
 This directory contains my University Assignments for COS30008. <br/>
 
 # List of Assignments
-1. [Problem Set 1 - Solution in C++](https://www.google.com)
-⋅⋅* [Solution in C++ - Source ](https://www.google.com)
-2. [Problem Set 2 - Indexers, Iterators, and Inheritance](https://www.google.com)
-⋅⋅* [Indexers, Iterators, and Inheritance - Source ](https://www.google.com)
-3. [Problem Set 3 - List ADT](https://www.google.com)
-⋅⋅* [List ADT - Source ](https://www.google.com)
-4. [Problem Set 4 - Binary Search Trees & In-Order Traversal](https://www.google.com)
-⋅⋅* [Binary Search Trees & In-Order Traversal - Source ](https://www.google.com)
+1. [Problem Set 1 - Solution in C++](#Problem Set 1 - Solution in C++)
+2. [Problem Set 2 - Indexers, Iterators, and Inheritance](#Problem Set 2 - Indexers, Iterators, and Inheritance)
+3. [Problem Set 3 - List ADT](#Problem Set 3 - List ADT)
+4. [Problem Set 4 - Binary Search Trees & In-Order Traversal](#Problem Set 4 - Binary Search Trees & In-Order Traversal)
+
 
 # Problem Set 1 – Solution Design in C++
 
