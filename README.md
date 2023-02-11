@@ -8,7 +8,7 @@ This directory contains my University Assignments for COS30008. <br/>
 4. [Problem Set 4 - Binary Search Trees & In-Order Traversal](# Problem Set 4 - Binary Search Trees & In-Order Traversal)
 
 
-# Problem Set 1 – Solution Design in C++
+# Problem Set 1 – Solution Design in C++ (# Problem-Set-1-–-Solution-Design-in-C++)
 
 ## Problem 1
 Write a program using array for the following problem statement:
