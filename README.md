@@ -2,7 +2,7 @@
 This directory contains my University Assignments for COS30008. <br/>
 
 # List of Assignments
-1. [Problem Set 1 - Solution in C++](# Problem Set 1 – Solution Design in C++)
+1. [Problem Set 1 - Solution in C++](# Problem-Set-1-–-Solution-Design-in-C++)
 2. [Problem Set 2 - Indexers, Iterators, and Inheritance](# Problem Set 2 - Indexers, Iterators, and Inheritance)
 3. [Problem Set 3 - List ADT](# Problem Set 3 - List ADT)
 4. [Problem Set 4 - Binary Search Trees & In-Order Traversal](# Problem Set 4 - Binary Search Trees & In-Order Traversal)
