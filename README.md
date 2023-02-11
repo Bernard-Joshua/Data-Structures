@@ -2,7 +2,14 @@
 This directory contains my University Assignments for COS30008. <br/>
 
 # List of Assignments
-
+1. [Problem Set 1 - Solution in C++](https://www.google.com)
+..1. [Solution in C++ - Source ](https://www.google.com)
+2. [Problem Set 2 - Indexers, Iterators, and Inheritance](https://www.google.com)
+..2. [Indexers, Iterators, and Inheritance - Source ](https://www.google.com)
+3. [Problem Set 3 - List ADT](https://www.google.com)
+..3. [List ADT - Source ](https://www.google.com)
+4. [Problem Set 4 - Binary Search Trees & In-Order Traversal](https://www.google.com)
+..4. [Binary Search Trees & In-Order Traversal - Source ](https://www.google.com)
 
 # Problem Set 1 – Solution Design in C++
 
@@ -146,7 +153,7 @@ List**& operator=**( **const** List**&** aOtherList ); ~List();
 
 **void** push\_front( **const** T**&** aElement ); **void** push\_back( **const** T**&** aElement ); **void** remove( **const** T**&** aElement ); 
 
-// default constructor
+// default constructor
 
 // copy constructor 
 
@@ -178,7 +185,7 @@ List( List**&&** aOtherList );  // move constructor List**& operator=**( List**&
 The template class List defines an “object adapter” for DoublyLinkedList objects (i.e., the list representation). Somebody else has already started with the implementation, but left the project unfinished. You find a header file for the incomplete List class on Canvas. This header file contains the specification of the template class List and the implementations for the destructor ~List() and the remove() method. You need to implement the remaining member functions.
 
 
-##Problem 2
+## Problem 2
 
 Implement the default constructor, the methods push\_front(), size(), and isEmpty(), and the iterator methods first. You can use #define P1  in Main.cpp  to enable the corresponding test driver.
 
@@ -427,3 +434,187 @@ BBBB
 
 AAAA
 ```
+
+# Problem Set 4 - Binary Search Trees & In-Order Traversal
+## Problem 1 
+
+Implement template class BNode that defines a basic representation for binary search trees: 
+
+```
+**#pragma once #include** <stdexcept>
+
+**template**<**typename** S> **struct** BNode
+
+{ 
+
+S key;
+
+BNode<S>**\*** 
+
+left;
+
+BNode<S>**\*** right;
+
+**static** BNode<S> NIL;
+
+**const** S**&** findMax() **const**; **const** S**&** findMin() **const**;
+
+**bool** remove( **const** S**&** aKey, BNode<S>**\*** aParent ); 
+
+BNode();
+
+BNode( **const** S**&** aKey ); BNode( S**&&** aKey );
+
+~BNode();
+
+**bool** empty() **const**; **bool** leaf() **const**;
+
+size\_t height() **const**;
+
+**bool** insert( **const** S**&** aKey );
+
+};
+
+**template**<**typename** S> BNode<S> BNode<S>::NIL;
+```
+
+Somebody has already started the project and implemented to remove() method and its two dependent  functions findMax()  and findMin().  You  need  to  define  the  remaining features.
+
+The  functions leaf() and height() define core  tree  primitives. The method insert() adds a node at the correct place in the binary tree structure, if this is possible. 
+
+The constructors and the destructor create and destroy nodes, respectively.
+
+You can use #define P1 in Main.cpp to enable the corresponding test driver, which should produce the following output:
+
+```
+Test BNode
+
+insert of 25 as root. insert of 10 succeeded. insert of 15 succeeded. insert of 37 succeeded. insert of 10 failed. insert of 30 succeeded. insert of 65 succeeded. Height of tree: 2 Delete BNode tree
+
+Test BNode completed.
+```
+
+## Problem 2 
+
+Implement  template class BinarySearchTree that  defines  the basic  infrastructure  for  a binary search tree (we ignore proper copy semantics here):
+
+```
+**#pragma once #include** "BNode.h"
+
+**template**<**typename** T>
+
+**class** BinarySearchTreeIterator;
+
+**template**<**typename** T> **class** BinarySearchTree { 
+
+**private**:
+
+BNode<T>**\*** fRoot;
+
+**public**:
+
+**using** Iterator = BinarySearchTreeIterator<T>;
+
+BinarySearchTree(); ~BinarySearchTree();
+
+`   `**bool** empty() **const**; 
+
+`   `**bool** insert( **const** T& aKey );    **bool** remove( **const** T& aKey ); 
+
+`   `size\_t height() **const**;    Iterator begin() **const**;    Iterator end() **const**;
+
+};
+```
+
+The template class BinarySearchTree defines an object adapter for binary tree nodes. The result is a simple binary search tree abstraction that provides support for adding and deleting nodes and a systematic traversal of the tree via a corresponding iterator.
+
+The  iterator BinarySearchTreeIterator  is  given  as  a  forward  declaration.  The  actual implementation  is  part  of  Problem  3.  For BinarySearchTree  you  just  have  to  add implementations, in begin() and end(), that yield a corresponding iterator. The test driver for this problem does not use iterators. Hence, the C++ compiler will not report any problems other than syntax errors.
+
+You can use #define P2 in Main.cpp to enable the corresponding test driver, which should produce the following output:
+
+```
+Test Binary Search Tree 
+
+insert of 25 succeeded. 
+
+insert of 10 succeeded. 
+
+insert of 15 succeeded. 
+
+insert of 37 succeeded. 
+
+insert of 10 failed. 
+
+insert of 30 succeeded. 
+
+insert of 65 succeeded. 
+
+Height of tree: 2
+
+Delete binary search tree now. Test Binary Search Tree completed.
+```
+
+## Problem 3
+
+Implement a binary search tree iterator that performs in-order traversal. Iterators do not allow for a recursive search procedure. Instead we need to use a stack to record the nodes that need to be visited. The  required process follows the depth-first search pattern, which first descents from the root along the left nodes to a leaf. Once the leftmost node has been visited, the iterator removes it from the stack, inspects its right node and descents, if necessary, to the leftmost node along the left nodes to a leaf again. The iterator stops if the traversal stack is empty.
+
+A corresponding iterator is given by the following specification:
+
+```
+**#pragma once #include** <stack> **#include** "BNode.h"
+
+**template**<**typename** T>
+
+**class** BinarySearchTreeIterator
+
+{ 
+
+**private**:
+
+**const** BNode<T>**\*** fBNodeTree;  // binary search tree std::stack<**const** BNode<T>**\***> fStack;  // DFS traversal stack
+
+**public**:
+
+**using** Iterator = BinarySearchTreeIterator<T>; 
+
+BinarySearchTreeIterator( **const** BNode<T>**\*** aBNodeTree ); 
+
+**const** T**&** operator**\***() **const**;
+
+Iterator**& operator++**(); Iterator **operator++**(**int**);
+
+**bool operator==**( **const** Iterator**&** aOtherIter ) **const**; **bool operator!=**( **const** Iterator**&** aOtherIter ) **const**;
+
+`   `Iterator begin() **const**; 
+
+`  `Iterator end() **const**; };
+```
+
+The  class  template BinarySearchTreeIterator  implements  a  forward  iterator.  It  uses std::stack as traversal stack. The template class std::stack implements the standard behavior of a stack.
+
+You can use #define P3 in Main.cpp to enable the corresponding test driver, which should produce the following output:
+
+```
+Test Binary Search Tree Iterator DFS 
+
+insert of 25 succeeded.
+
+insert of 10 succeeded. 
+
+insert of 15 succeeded. 
+
+insert of 37 succeeded. 
+
+insert of 10 failed. 
+
+insert of 30 succeeded. 
+
+insert of 65 succeeded. 
+
+insert of 8 succeeded. 
+
+DFS: 8 10 15 25 30 37 65
+
+Test Binary Search Tree Iterator DFS completed.
+```
+
